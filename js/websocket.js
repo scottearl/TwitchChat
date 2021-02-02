@@ -10,7 +10,7 @@ ws.onmessage = function (event) {
 
         renderMessage(message)
 
-        cullMessages()
+        count = 0;
 
         console.log(message)
 
@@ -86,12 +86,19 @@ function renderMessage(message){
         $(".slideDown").addClass("slideUp")  
     }, 100);
 
-    cullMessages()
-
 
 }
 
 function cullMessages(){
+
+    if(count == 30){
+
+        $(".chatMessage").first().slideUp(function() { $(this).remove(); } );
+        count = 0;
+
+    }
+
+    count++
 
     if($(".chatMessage").length > 5){
 
@@ -100,3 +107,9 @@ function cullMessages(){
     }
 
 }
+
+//All this is real bad
+var count = 0;
+setInterval(function() {
+    cullMessages()
+}, 1000);
