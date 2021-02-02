@@ -1,0 +1,30 @@
+.chatMessage{
+
+    text-align:left;
+    background-color:white;
+    border-radius:3px;
+    border: 1px solid transparent;
+    margin-bottom:10px;
+    width:100%;
+}
+
+.comment{
+
+    padding:0px 5px 0px 5px;
+    font-family: Arial, Helvetica, sans-serif;
+
+}
+
+.slideUp{
+
+    margin-top:0px !important;
+    transition: margin 700ms;
+}
+
+.slideDown{
+
+
+    margin-top:1000px;
+
+}
+

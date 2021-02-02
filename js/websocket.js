@@ -10,6 +10,8 @@ ws.onmessage = function (event) {
 
         renderMessage(message)
 
+        cullMessages()
+
         console.log(message)
 
     }
@@ -71,13 +73,30 @@ function renderMessage(message){
 
     var html = "";
 
-    html += "<div>"
+    html += "<div class='chatMessage slideDown'>"
 
-        html += "<p><b>"+message.user+"</b>: "
+        html += "<p class='comment' ><b style='color:"+message.color+"'>"+message.user+"</b>: "
         html += message.text+"</p>"
 
     html += "</div>"
 
     $(".main").append(html)
+
+    setTimeout(function() {
+        $(".slideDown").addClass("slideUp")  
+    }, 100);
+
+    cullMessages()
+
+
+}
+
+function cullMessages(){
+
+    if($(".chatMessage").length > 5){
+
+        $(".chatMessage").first().slideUp(function() { $(this).remove(); } );
+
+    }
 
 }
