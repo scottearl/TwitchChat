@@ -79,7 +79,7 @@ function renderMessage(message){
     
     for(var i = 0; i < message.emotes.length; i++){
         
-        message.text = message.text.replaceAll(message.emotes[i].replace, " <img src='https://static-cdn.jtvnw.net/emoticons/v2/"+message.emotes[i].id+"/default/light/1.0' style='height:20px;vertical-align: middle;position: relative;'> ")
+        message.text = message.text.split(message.emotes[i].replace).join(" <img src='https://static-cdn.jtvnw.net/emoticons/v2/"+message.emotes[i].id+"/default/light/1.0' style='height:20px;vertical-align: middle;position: relative;'> ")
         
     }
     
