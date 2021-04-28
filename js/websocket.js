@@ -20,8 +20,8 @@ ws.onmessage = function (event) {
 ws.onopen = function(event){
     ws.send("CAP REQ :twitch.tv/tags twitch.tv/commands twitch.tv/membership")
     ws.send(twitch.key)
-    ws.send("NICK s_earl")
-    ws.send("JOIN #s_earl") 
+    ws.send("NICK "+twitch.channel)
+    ws.send("JOIN #"+twitch.channel) 
 }
 
 function parseMessage(data){
@@ -70,6 +70,21 @@ function parseMessage(data){
 }
 
 function renderMessage(message){
+    
+    for(var i = 0; i < message.emotes.length; i++){
+        
+        message.emotes[i].replace = message.text.substring(message.emotes[i].lower, Number(message.emotes[i].upper)+1);
+        
+    }
+    
+    for(var i = 0; i < message.emotes.length; i++){
+        
+        message.text = message.text.replaceAll(message.emotes[i].replace, " <img src='https://static-cdn.jtvnw.net/emoticons/v2/"+message.emotes[i].id+"/default/light/1.0' style='height:20px;vertical-align: middle;position: relative;'> ")
+        
+    }
+    
+    
+    
 
     var html = "";
 
@@ -85,7 +100,8 @@ function renderMessage(message){
     setTimeout(function() {
         $(".slideDown").addClass("slideUp")  
     }, 100);
-
+    
+    console.log(message)
 
 }
 
