@@ -41,7 +41,7 @@ function parseMessage(data){
 
     message.user = obj[4].split("=")[1]
     message.color = obj[3].split("=")[1]
-    message.text = obj[14+offset].split("PRIVMSG #s_earl :")[1]
+    message.text = obj[14+offset].split("PRIVMSG #"+twitch.channel+" :")[1]
 
     var emotes = obj[5+offset].split("=")[1]
     emotes = emotes.split("/")
